@@ -5,6 +5,7 @@ import KeyboardButton from './KeyboardButton';
 import LatinLayout from './layouts/LatinLayout';
 import CyrillicLayout from './layouts/CyrillicLayout';
 import SymbolsLayout from './layouts/SymbolsLayout';
+import NumPadLayout from './layouts/NumPadLayout';
 
 import BackspaceIcon from './icons/BackspaceIcon';
 import LanguageIcon from './icons/LanguageIcon';
@@ -132,6 +133,68 @@ export default class Keyboard extends PureComponent {
 		const keys = this.getKeys();
 		const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 		const symbolsKeyValue = this.getSymbolsKeyValue();
+    
+        console.log(symbolsKeyValue)
+
+        if(symbolsKeyValue === '123') {
+          return (
+			<div className="keyboard">
+					<KeyboardButton
+						value={<BackspaceIcon />}
+						onClick={this.handleBackspaceClick}
+					/>
+				<div className="keyboard-row">
+					{keys[0].map(button =>
+						<KeyboardButton
+							value={button}
+							onClick={this.handleLetterButtonClick}
+							key={button}
+						/>
+					)}
+				</div>
+
+				<div className="keyboard-row">
+					<div className="keyboard-halfButton" />
+					{keys[1].map(button =>
+						<KeyboardButton
+							value={button}
+							onClick={this.handleLetterButtonClick}
+							key={button}
+						/>
+					)}
+					<div className="keyboard-halfButton" />
+				</div>
+
+				<div className="keyboard-row">
+					{keys[2].map(button =>
+						<KeyboardButton
+							value={button}
+							onClick={this.handleLetterButtonClick}
+							key={button}
+						/>
+					)}
+				</div>
+
+				<div className="keyboard-row">
+					{keys[3].map(button =>
+						<KeyboardButton
+							value={button}
+							onClick={this.handleLetterButtonClick}
+							key={button}
+						/>
+					)}
+				</div>
+				
+                <div className="keyboard-row">
+					<KeyboardButton
+						value={' '}
+						classes="keyboard-space"
+						onClick={this.handleLetterButtonClick}
+					/>
+				</div>
+			</div>
+          )
+        }
 
 		return (
 			<div className="keyboard">
